@@ -1,12 +1,12 @@
-var http = require("http");
+const http = require("http");
+const express = require("express");
+const app = express();
+const server = http.createServer(app);
+const routes = require("./routes");
+const Port = 4000 || process.env.port;
 
-function test(){
-    console.log("It is working");
-}
-test();
+app.use(routes);
 
-function newTest(){
-    console.log("new test is working fine");
-}
-
-newTest();
+server.listen(Port,()=>{
+    console.log("Server is running on port",Port);
+})
